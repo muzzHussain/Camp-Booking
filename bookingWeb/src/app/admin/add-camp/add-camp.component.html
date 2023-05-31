@@ -1,0 +1,100 @@
+<div class="container col-sm-6">
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show mt-1 " role="alert">
+        <strong>Success ! </strong> Camp is added.
+        <button (click)="closeAlert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="buttons">
+            <a routerLink="/addCamps">
+                <button class="btn btn-secondary">Add New Camp</button>
+            </a>
+            &nbsp;
+            <a routerLink="/camp">
+                <button class="btn btn-secondary">Manage Existing Camps</button>
+            </a>
+        </div>
+        <div class="container-fluid">
+            <form [formGroup]="addCamp">
+                <div class="row">
+                <div class="col-6">
+                    <div >
+                        <div class="preview">
+                            <img [src]="base64Image" *ngIf="imageUrl" id="imageHolder" style="height: 300px; width: 300px">
+                        </div>
+                        <div class="col-8 mx-3 button">
+                            <label class="btn btn-default p-0">
+                            <input type="text" formControlName="Image" #img placeholder="Input Image URL.." />
+                            </label>
+                            <input type="button" class="btn btn-outline-success" (click)="getImage(img.value)" value="Preview">
+                        </div>
+                        <small *ngIf="iu.invalid && iu.touched" class="text-danger fw-bold">*Image is Required</small>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <p class="heading">Please fill the details below to add a camp.</p>
+                    <div class="col-8">
+                        
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Camp Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" formControlName="campName">
+                                <small *ngIf="cn.invalid && cn.touched" class="text-danger fw-bold">*Camp name is Required</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Rate per night</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" formControlName="ratePerNight">
+                                <small *ngIf="rt.invalid && rt.touched" class="text-danger fw-bold">*Rate is Required</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Capacity</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" formControlName="capacity">
+                                <small *ngIf="cp.invalid && cp.touched" class="text-danger fw-bold">*Capacity is Required</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Total Stay</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" formControlName="totalStay">
+                                <small *ngIf="ts.invalid && ts.touched" class="text-danger fw-bold">*Total Stay is Required</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Check In</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" formControlName="checkIn">
+                                <small *ngIf="ci.invalid && ci.touched" class="text-danger fw-bold">*Check In is Required</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Check Out</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" formControlName="checkOut">
+                                <small *ngIf="co.invalid && co.touched" class="text-danger fw-bold">*Check Out is Required</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Description</label>
+                            <div class="col-sm-8">
+                                <textarea rows="2" cols="10" class="form-control" formControlName="description"></textarea>
+                                <small *ngIf="d.invalid && d.touched" class="text-danger fw-bold">*Description is Required</small>
+                            </div>
+                        </div>
+            
+                        <div class="text-center">
+                            <button (click)="onAddNewCamp()" class="btn btn-primary">Add new Camp</button>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div> 
+

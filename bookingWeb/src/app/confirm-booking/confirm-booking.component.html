@@ -1,0 +1,59 @@
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-6 mt-3">
+            <div>
+                <img src="../../assets/icons8-checkmark.gif" width="40" height="40">
+                <b>&nbsp;Congratulations, Booking Confirm!</b>
+            </div>
+            <form #book="ngForm">
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Booking Ref. No.</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly #addess="ngModel" ngModel name="billingAddress" class="form-control-plaintext" placeholder="{{bookedData[0].brn}}" required>
+                    </div>
+                </div>
+                
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Billing Address</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly #addess="ngModel" ngModel name="billingAddress" class="form-control-plaintext" placeholder="{{bookedData[0].address}}" required>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">State</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly #state="ngModel" ngModel name="state" class="form-control-plaintext" placeholder="{{bookedData[0].state}}" required="">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Country</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly #country="ngModel" ngModel name="country" class="form-control-plaintext" placeholder="{{bookedData[0].country}}" required="">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">ZipCode</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly #zip="ngModel" ngModel name="zipcode" class="form-control-plaintext" placeholder="{{bookedData[0].zipCode}}" required="">
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Ph. No.</label>
+                    <div class="col-sm-8">
+                        <input type="tel" readonly #phn="ngModel" ngModel name="phno" class="form-control-plaintext" placeholder="{{bookedData[0].phoneNo}}" required="">
+                    </div>
+                </div>
+
+                <a class="mt-3" routerLink="/dashboard">
+                    <input class="btn btn-secondary" value="Back">
+                </a>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,51 @@
+
+<div class="container">
+    <div class="row">
+        <div class="buttons">
+            <a routerLink="/addCamps">
+                <button class="btn btn-secondary">Add New Camp</button>
+            </a>
+            &nbsp;
+            <a routerLink="/list">
+                <button class="btn btn-secondary">Manage Existing Camps</button>
+            </a>
+            &nbsp;
+            <a routerLink="/">
+                <button class="btn btn-outline-secondary">Back</button>
+            </a>
+        </div>
+        <table class="table mt-5">
+            <thead>
+                <th width="20%"></th>
+                <th width="20%"></th>
+                <th width="21%"></th>
+                <th width="20%"></th>
+            </thead>
+            <tr *ngFor="let item of campList | paginate: config">
+                <td>
+                    <img src="{{item.image}}" width="200" height="180" alt="camp" style="margin: 0; padding: 0;" />
+                </td>
+                <td>
+                   <i>Max:</i>{{item.capacity}} person
+                </td>
+                <td>{{item.description}}</td>
+                <td>
+                    INR.{{item.ratePerNight}}/-<small>per night</small>
+                    <br>
+                </td>
+                <td>
+                    <a routerLink="/updateCamp/{{item.id}}">
+                        <button class="btn btn-outline-success"> Update</button>
+                    </a>
+                    &nbsp;
+                    <button (click)="deleteCamp(item.id)" class="btn btn-outline-danger">Delete</button>
+                </td>
+                
+            </tr>
+        </table>
+        <pagination-controls class="d-flex justify-content-center position-fixed bottom-0" (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+        
+
+

@@ -1,0 +1,27 @@
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+.fa-trash{
+    color: red;
+}
+
+.fa-pencil{
+    color: green;
+}
+
+.pageControl{
+    margin-left: 500px;
+}
+
+.ratingColor{
+    color: rgb(198, 198, 64);
+    font-size: 20px;
+}
+
+.over{
+    margin-top: 5px;
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(42, 70, 127);
+}

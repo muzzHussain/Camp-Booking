@@ -1,0 +1,48 @@
+.box{
+    /* border: 1px solid red; */
+    margin-left: 5px;
+    width: 40%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* .box1{
+    border: 1px solid red;
+    margin-left: 5px;
+    width: 40%;
+} */
+
+.preview{
+    height: 300px;
+    width: 300px;
+    /* border: 15px solid green; */
+    /* text-align: center; */
+    /* padding: 32px; */
+    margin: 20px;
+}
+
+img{
+    /* transition: transform .2s;
+    transform: scale(1.01); */
+    box-shadow: 3px 3px 8px;
+}
+
+/* img:hover{
+    transform: scale(1.01);
+    box-shadow: 3px 3px 8px;
+} */
+
+
+.button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading{
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(42, 70, 127);
+}

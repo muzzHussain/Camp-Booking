@@ -1,0 +1,31 @@
+<div class="container col-sm-6">
+    <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show mt-1 " role="alert">
+        <strong>Oops ! </strong> {{errs}}.
+        <button (click)="closeAlert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<div class="global-container">
+    <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">Admin Login</h3>
+            <div class="card-text">
+                <form [formGroup]="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label">User Name</label>
+                        <input type="text" class="form-control" formControlName="username">
+                        <small *ngIf="un.invalid && un.touched" class="text-danger fw-bold">*Username is Required</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <small *ngIf="pwd.invalid && pwd.touched" class="text-danger fw-bold">*Password is Required</small>
+                    </div>
+                    
+                    <button (click)="onLogin()"  type="submit" class="btn btn-outline-primary">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

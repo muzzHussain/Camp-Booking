@@ -1,0 +1,33 @@
+a{
+    text-decoration: none;
+}
+
+.btm{
+    align-items: baseline;
+}
+
+p{
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.heading{
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(42, 70, 127);
+}
+
+.ratingColor{
+    color: rgb(198, 198, 64);
+    font-size: 20px;
+}
+
+.over{
+    margin-top: 5px;
+}

@@ -1,0 +1,53 @@
+.box{
+    margin-left: 5px;
+    width: 40%;
+}
+
+.preview{
+    background-color: lightgrey;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    /* padding: 50px; */
+    margin: 20px;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading{
+    font-style: oblique;
+}
+
+.box{
+    margin-left: 5px;
+    width: 40%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.preview{
+    height: 300px;
+    width: 300px;
+    margin: 20px;
+}
+
+img{
+    box-shadow: 3px 3px 8px;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading{
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(42, 70, 127);
+}

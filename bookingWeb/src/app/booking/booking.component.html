@@ -1,0 +1,107 @@
+
+<div class="container">
+    <div class="row">
+        <div class="buttons">
+            <a routerLink="/dashboard">
+                <button class="btn btn-secondary">Back</button>
+            </a>
+            &nbsp;
+            <a routerLink="/manageBooking">
+                <button class="btn btn-outline-primary">Manage Booking</button>
+            </a>
+            &nbsp;
+            <a routerLink="/Login">
+                <button class="btn btn-outline-warning">Admin Login</button>
+            </a>
+        </div>
+        <div class="col-sm-4 my-4 box" *ngFor="let item of data">
+            <div class="preview"> 
+                <img src="{{item.image}}" width="300" height="300">
+            </div>
+            <div class="col-4 mx-3 button">
+                <label class="form-control heading">
+                  Max: {{item.capacity}} Person
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-4 my-4 box" *ngFor="let item of data">
+            <div class="mb-3 row">
+                <label class="col-sm-8 heading">
+                    {{item.description}}
+
+                </label>
+                <label class="col-sm-4 heading d-flex justify-content-end">INR.{{item.ratePerNight}}/- night </label>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-4">Total Stay: </label>
+                <div class="col-sm-8">
+                    {{item.totalStay}} nights
+                </div>
+            </div>
+            <div class="mb-2 row" *ngIf="show == true">
+                <label class="col-sm-4">Coupon Code: </label>
+                <div class="col-sm-4">
+                    <input type="text" maxlength="8" #coupon class="form-control" > 
+                </div>
+                <div class="col-sm-4">
+                    <input type="button" (click)="applyCoupon(coupon.value)"  class="btn btn-secondary" value="Apply Coupon"> 
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-4">Total Amount: </label>
+                <div class="col-sm-8">
+                    <b class="heading">INR.{{totalAmount}}</b>
+                </div>
+            </div>
+            <p class="heading">Please fill the details below to complete the booking.</p>
+            <form [formGroup]="bookingForm">
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Billing Address</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="address" class="form-control" required="">
+                        <small  *ngIf="ba.invalid && ba.touched" class="text-danger fw-bold">*Address is Required</small>            
+                    </div>       
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">State</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="state" class="form-control" required="">
+                        <small  *ngIf="st.invalid && st.touched" class="text-danger fw-bold">*State is Required</small>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Country</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="country" class="form-control" required="">
+                        <small  *ngIf="cn.invalid && cn.touched" class="text-danger fw-bold">*Country is Required</small>
+                    </div>  
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">ZipCode</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="zipCode" class="form-control" required="">
+                        <small  *ngIf="zc.invalid && zc.touched" class="text-danger fw-bold">*Zip Code is Required</small>
+                    </div> 
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Ph. No.</label>
+                    <div class="col-sm-8">
+                        <input type="tel" formControlName="phoneNo" class="form-control" required="">
+                        <small  *ngIf="ph.invalid && ph.touched" class="text-danger fw-bold">*Phone number is Required</small>
+                    </div>  
+                </div>
+                
+                <div class="text-center mt-3">
+                    <button (click)="confirmBooking(bookingForm.value)" type="submit"  class="btn btn-primary">
+                        Confirm Booking
+                      </button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

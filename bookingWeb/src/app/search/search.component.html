@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="buttons">
+          <!-- <marquee>
+            this is marquee
+          </marquee> -->
+            <a routerLink="/manageBooking">
+                  <button class="btn btn-outline-primary">Manage Bookings</button>
+            </a>
+            &nbsp;
+            <a routerLink="/Login">
+              <button class="btn btn-outline-warning">Admin Login</button>
+            </a>            
+        </div>
+        <div class="col-sm-5 search-box">
+            <form [formGroup]="searchForm">
+              <p class="heading">Search</p>
+              <div class="form-floating mb-3">
+                  <input type="date" formControlName="checkIn" name="checkin" class="form-control" min="{{minDate}}" id="floatingInput">
+                  <label for="floatingInput">Check In</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="date" formControlName="checkOut" name="checkout" class="form-control" min="{{nextDate}}" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Check Out</label>
+              </div>
+              <div class="form-floating mb-3">
+                <select formControlName="capacity" name="capacity" class="form-select" aria-label="Default select example">
+                    <option value="" [selected]="true">--Select--</option>
+                    <option value="0">Any Capacity</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                </select>
+                <label for="floatingPassword">Capacity</label>
+              </div>
+                <button class="btn btn-outline-primary mb-2" (click)="searchData(searchForm.value)">Search</button>
+            </form>
+        </div>
+        <div class="col-sm-5 list-box mx">
+            <div class="card mb-3" style="width: 600px;" *ngFor="let item of campList | paginate : config">
+              <div *ngIf="campList.length <= 0">
+                <h1>No Data </h1>
+              </div>
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{item.image}}" class="img-fluid rounded-start" alt="camp">
+                    <div class="heading">
+                        <p>Max: {{item.capacity}} person</p>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title text-end heading">INR. {{item.ratePerNight}}/-<small>per night</small></h5>
+                      <p class="card-text">{{item.description}}</p>
+                      <a routerLink="/booking/{{item.id}}" class="d-flex justify-content-end">
+                        <button class="btn btn-danger">Book</button>
+                      </a>
+                      <p *ngIf="item.averageRating > 0" class="card-text d-flex justify-content-end heading ">Avg. Rating: <strong class="ratingColor">{{item.averageRating}}</strong><small class="over">/5</small> </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <pagination-controls class="d-flex justify-content-center position-fixed bottom-0 " (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+    </div>
+</div>

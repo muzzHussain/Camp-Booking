@@ -1,0 +1,36 @@
+
+<div class="container">
+    <div class="row">
+        <div class="buttons">
+            <a routerLink="/addCamps">
+                <button class="btn btn-outline-primary">Manage Camp</button>
+            </a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <th width="20%"></th>
+                <th width="20%">Capacity</th>
+                <th width="30%">description</th>
+                <th width="20%">Rate</th>
+                <th width="20%">Rating</th>
+            </thead>
+            <tr *ngFor="let item of campList | paginate : config">
+                <td>
+                    <img src="{{item.image}}" width="200" height="180" alt="camp" style="margin: 0; padding: 0;" />
+                </td>
+                <td>
+                   <i>Max:</i>{{item.capacity}} person
+                </td>
+                <td class="text-break">{{item.description}}</td>
+                <td>
+                    INR.{{item.ratePerNight}}/-<small>per night</small>
+                    <br>
+                </td>
+                <td>
+                    <p><strong class="ratingColor">{{item.averageRating}}</strong><small class="over">/5</small></p>
+                </td>
+            </tr>
+        </table>
+        <pagination-controls class="d-flex justify-content-center position-fixed bottom-0" (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>

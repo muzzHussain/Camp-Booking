@@ -1,0 +1,91 @@
+<div class="container col-sm-6">
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show mt-1 " role="alert">
+        <strong>Success ! </strong> Camp is updated.
+        <button (click)="closeAlert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="container-fluid">
+            <form [formGroup]="editCamp" >
+                <div class="row">
+                    <div class="col-6">
+                        <div >
+                            <div class="preview">
+                                <img [src]="base64Image" *ngIf="imageUrl" id="imageHolder" style="height: 300px; width: 300px">
+                            </div>
+                            <div class="col-8 mx-3 button">
+                                <label class="btn btn-default p-0">
+                                    <input type="text" formControlName="Image" #img placeholder="Paste url..." [value]="imageUrl" />
+                                </label>
+                                <input type="button" class="btn btn-outline-success" value="Preview" (click)="getImageURL(img.value)">
+                            </div>
+                            <small style="margin-left: 19px;" class="text-danger"><b>*Paste image link mandatory</b></small>
+                            <small *ngIf="iu.invalid && iu.touched" class="text-danger fw-bold">*Image is Required</small>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <p class="heading">Please update the camp details below.</p>
+                        <div class="col-8">
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Camp Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" formControlName="CampName">
+                                    <small *ngIf="cn.invalid && cn.touched" class="text-danger fw-bold">*Camp name is Required</small>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Rate per night</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" formControlName="RatePerNight">
+                                    <small *ngIf="rt.invalid && rt.touched" class="text-danger fw-bold">*Rate is Required</small>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Capacity</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" formControlName="Capacity">
+                                    <small *ngIf="cp.invalid && cp.touched" class="text-danger fw-bold">*Capacity is Required</small>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Total Stay</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" formControlName="TotalStay">
+                                    <small *ngIf="ts.invalid && ts.touched" class="text-danger fw-bold">*Total Stay is Required</small>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Check In</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" formControlName="CheckIn">
+                                    <small *ngIf="ci.invalid && ci.touched" class="text-danger fw-bold">*Check In is Required</small>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Check Out</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" formControlName="CheckOut">
+                                    <small *ngIf="co.invalid && co.touched" class="text-danger fw-bold">*Check Out is Required</small>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Description</label>
+                                <div class="col-sm-8">
+                                    <textarea rows="2" cols="10" class="form-control" formControlName="Description"></textarea>
+                                    <small *ngIf="d.invalid && d.touched" class="text-danger fw-bold">*Description is Required</small>
+                                </div>
+                            </div>
+            
+                            <div class="text-center">
+                                <button (click)="onEditCamp()" class="btn btn-primary">Update Camp</button>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> 
+</div> 
+

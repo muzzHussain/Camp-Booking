@@ -1,0 +1,23 @@
+.preview{
+    background-color: lightgrey;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    /* padding: 50px; */
+    margin: 20px;
+}
+
+.heading{
+    font-style: oblique;
+    font-weight: bold;
+    color: rgb(42, 70, 127);
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+}
+
+img{
+    box-shadow: 3px 3px 8px;
+}

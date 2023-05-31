@@ -1,0 +1,96 @@
+<div class="container col-sm-6">
+    <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show mt-1" role="alert" data-auto-dismiss>
+        <strong>Oops ! </strong> Wrong Reference Number.
+        <button (click)="closeAlert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <h3>Search Booking</h3>
+    <div class="teachLog">
+      <form [formGroup]="searchForm" class="teachForm">
+        <div class="mb-3">
+          <label class="form-label">Reference Number : </label>
+          <input maxlength="8" name="password" formControlName="BRN" class="form-control" placeholder="Enter your reference number" required>
+          <small *ngIf="cn.invalid && cn.touched" class="text-danger fw-bold">*Reference Number is Required</small>
+        </div>
+        
+          <button (click)="searchBooking(searchForm.value)" type="submit" class="btn btn-outline-primary">
+            Search
+          </button>
+          &nbsp;
+        <a routerLink="/" class="btn btn-outline-secondary">Back</a>
+      </form>
+    </div>
+
+    <div class="row d-flex justify-content-center mt-5" *ngIf="show == true">
+      
+      <div class="col-sm-6 mt-3" *ngFor="let item of collection">
+        <div>
+          <h4>Booking Details</h4>
+        </div>
+        
+        <form #book="ngForm">
+            <div class="mb-2 row">
+                <label class="col-sm-6 col-form-label">Booking Ref. No.</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly #addess="ngModel" ngModel name="billingAddress" class="form-control-plaintext" placeholder="{{item.brn}}" required>
+                </div>
+            </div>
+            <div class="mb-2 row">
+                <label class="col-sm-6 col-form-label">Billing Address</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly #addess="ngModel" ngModel name="billingAddress" class="form-control-plaintext" placeholder="{{item.address}}" required>
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-6 col-form-label">State</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly #state="ngModel" ngModel name="state" class="form-control-plaintext" placeholder="{{item.state}}" required="">
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-6 col-form-label">Country</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly #country="ngModel" ngModel name="country" class="form-control-plaintext" placeholder="{{item.country}}" required="">
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-6 col-form-label">ZipCode</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly #zip="ngModel" ngModel name="zipcode" class="form-control-plaintext" placeholder="{{item.zipCode}}" required="">
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+                <label class="col-sm-6 col-form-label">Ph. No.</label>
+                <div class="col-sm-6">
+                    <input type="tel" readonly #phn="ngModel" ngModel name="phno" class="form-control-plaintext" placeholder="{{item.phoneNo}}" required="">
+                </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label class="col-sm-6 col-form label">Rating</label>
+              <div class="col-sm-6">
+                <ul class="list-inline rating-list" *ngFor="let star of stars"  >
+                    <li (click)="countStar(star)" [ngClass]="{'selected' : (star <= selectedStar)}">
+                      <i class="fa fa-star "></i>
+                    </li> 
+                </ul>
+              </div>
+            </div>
+            <div class="buttons">
+              <a routerLink="/" *ngIf="showEdit == true">
+                  <button (click)="updateRating()" class="btn btn-success">Add/Edit Rating</button>
+              </a>
+              &nbsp;
+              <a routerLink="/" *ngIf="showEdit == false">
+                  <button class="btn btn-danger" (click)="cancelBooking()">Cancel booking</button>
+              </a>
+          </div>
+        </form>
+    </div>
+
+  </div>
+      
+</div>
